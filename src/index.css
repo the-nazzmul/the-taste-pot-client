@@ -7,6 +7,6 @@
     @apply bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm
 }
 
-.navbar a.active{
+a.active{
     @apply bg-gradient-to-l from-[#E67907] to-[#EAC41B] border-none rounded-lg text-white
 }
