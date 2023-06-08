@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from './../../assets/logo.svg'
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import SocialLogin from "./SocialLogin";
 
 
 const image_hosting_token = import.meta.env.VITE_IMAGE_HOSTING_TOKEN
@@ -29,6 +30,7 @@ const Registration = () => {
                             data.image = imageRes.data.display_url;
                             updateUserProfile(data.name, data.image)
                                 .then(() => {
+                                    // TODO: Need to save user to the DB
                                     Swal.fire({
                                         position: 'center',
                                         icon: 'success',
@@ -115,6 +117,7 @@ const Registration = () => {
                                 <input className="custom-btn" type="submit" value="Register" />
                             </div>
                             <p>Already Have an account? <Link to='/login' className="text-red-600">Login</Link></p>
+                            <SocialLogin></SocialLogin>
                         </form>
                     </div>
                 </div>

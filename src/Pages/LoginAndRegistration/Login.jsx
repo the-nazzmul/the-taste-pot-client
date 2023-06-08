@@ -2,10 +2,11 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from './../../assets/logo.svg'
 import useAuth from "../../Hooks/useAuth";
+import SocialLogin from "./SocialLogin";
 
 
 const Login = () => {
-    const {signIn, googleLogin} = useAuth()
+    const {signIn} = useAuth()
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
     const location = useLocation();
@@ -47,6 +48,7 @@ const Login = () => {
                                 <input className="custom-btn" type="submit" value="Login" />
                             </div>
                             <small>New here? <Link to='/register' className="text-red-600">Register</Link></small>
+                            <SocialLogin></SocialLogin>
                         </form>
                     </div>
                 </div>
