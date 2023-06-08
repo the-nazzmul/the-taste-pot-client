@@ -1,9 +1,11 @@
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const SocialLogin = () => {
-    const {googleLogin} = useAuth()
+    const { googleLogin } = useAuth()
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -11,10 +13,23 @@ const SocialLogin = () => {
 
     const handleGoogleSignIn = () => {
         googleLogin()
-        .then(()=>{
-            // TODO: Need to save user to the DB
-            navigate(from)
-        })
+            .then((res) => {
+                const saveUser = { name: res.user.displayName, email: res.user.email, image: res.user.photoURL, role: 'student' }
+                axios.post(`http://localhost:4000/users`, saveUser)
+                    .then(res => {
+                        console.log(res);
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Registration Successful!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            navigate(from)
+                        }
+                    })
+            })
     }
     return (
         <div >

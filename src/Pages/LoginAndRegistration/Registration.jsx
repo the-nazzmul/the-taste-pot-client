@@ -4,6 +4,7 @@ import logo from './../../assets/logo.svg'
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
+import axios from "axios";
 
 
 const image_hosting_token = import.meta.env.VITE_IMAGE_HOSTING_TOKEN
@@ -30,15 +31,21 @@ const Registration = () => {
                             data.image = imageRes.data.display_url;
                             updateUserProfile(data.name, data.image)
                                 .then(() => {
-                                    // TODO: Need to save user to the DB
-                                    Swal.fire({
-                                        position: 'center',
-                                        icon: 'success',
-                                        title: 'Registration Successful!',
-                                        showConfirmButton: false,
-                                        timer: 1500
+                                    const saveUser = {name: data.name, email: data.email, image: data.image, role: 'student'}
+                                    axios.post(`http://localhost:4000/users`, saveUser)
+                                    .then(res =>{
+                                        console.log(res);
+                                        if(res.data.insertedId){
+                                            Swal.fire({
+                                                position: 'center',
+                                                icon: 'success',
+                                                title: 'Registration Successful!',
+                                                showConfirmButton: false,
+                                                timer: 1500
+                                            })
+                                            navigate('/')
+                                        }
                                     })
-                                    navigate('/')
                                 })
                         }
                     })
