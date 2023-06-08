@@ -4,7 +4,7 @@
 
 
 .custom-btn{
-    @apply bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm
+    @apply bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white
 }
 
 a.active{

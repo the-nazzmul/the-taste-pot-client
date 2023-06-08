@@ -1,15 +1,23 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from './../assets/logo.svg'
+import useAuth from "../Hooks/useAuth";
 
 
 const NavBar = () => {
+    const { user, logOut } = useAuth()
     const navigationElement = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/instructors'>Instructors</NavLink></li>
         <li><NavLink to='/classes'>Classes</NavLink></li>
-        <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
+        {
+            user ? <li><NavLink to='/dashboard'>Dashboard</NavLink></li> : ''
+        }
 
     </>
+
+    const handleLogOut = ()=>{
+        logOut()
+    }
     return (
         <div>
             <div className="navbar bg-[#FDF7EC]">
@@ -30,12 +38,18 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <div className="avatar mr-2">
-                        <div className="w-10 rounded-full">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
-                    </div>
-                    <Link to='/login'><button className="custom-btn">Login</button></Link>
+                    {
+                        user ?
+                            <>
+                                <div className="avatar mr-2">
+                                    <div className="w-14 border-4 border-white rounded-full">
+                                        <img src={user.photoURL} />
+                                    </div>
+                                </div>
+                                <button onClick={handleLogOut} className="custom-btn">Logout</button>
+                            </>:
+                            <Link to='/login'><button className="custom-btn">Login</button></Link>
+                    }
                 </div>
             </div>
         </div>
