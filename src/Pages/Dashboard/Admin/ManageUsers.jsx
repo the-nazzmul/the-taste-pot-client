@@ -1,8 +1,76 @@
 import useUsers from "../../../Hooks/useUsers";
+import { GrUserAdmin } from "react-icons/gr";
+import { GiTeacher } from "react-icons/gi";
+import Swal from "sweetalert2";
 
 
 const ManageUsers = () => {
     const [users, refetch] = useUsers()
+
+    const handleMakeInstructor = (user) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Proceed!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:4000/users/instructor`, {
+                    method: "PATCH",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.modifiedCount) {
+                            Swal.fire(
+                                'Successful!',
+                                'User role has been updated',
+                                'success'
+                            )
+                            refetch()
+                        }
+                    })
+            }
+        })
+    }
+    const handleMakeAdmin = (user) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Proceed!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:4000/users/admin`, {
+                    method: "PATCH",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.modifiedCount) {
+                            Swal.fire(
+                                'Successful!',
+                                'User role has been updated',
+                                'success'
+                            )
+                            refetch()
+                        }
+                    })
+            }
+        })
+    }
 
     return (
         <div className="w-full px-12 h-full mt-20">
@@ -17,7 +85,8 @@ const ManageUsers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th>Make Instructor</th>
+                            <th>Make Admin</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,9 +102,8 @@ const ManageUsers = () => {
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>{user.role}</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
-                                    </th>
+                                    <td><button onClick={() => handleMakeInstructor(user)} disabled={user.role === 'admin' || user.role === "instructor"} className="btn btn-sm bg-orange-400"><GiTeacher className="text-xl"></GiTeacher></button></td>
+                                    <td><button onClick={() => handleMakeAdmin(user)} disabled={user.role === 'admin' || user.role === "instructor"} className="btn btn-sm bg-green-400"><GrUserAdmin className="text-xl"></GrUserAdmin></button></td>
                                 </tr>
                             )
                         }
