@@ -26,8 +26,8 @@ const SocialLogin = () => {
                                 showConfirmButton: false,
                                 timer: 1500
                             })
-                            navigate(from)
                         }
+                        navigate(from)
                     })
             })
     }
