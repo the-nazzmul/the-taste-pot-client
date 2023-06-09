@@ -10,7 +10,7 @@ import banner6 from './../assets/Banner/Banner6.jpg'
 
 const Banner = () => {
     return (
-        <div>
+        <div className="pt-20">
             <Carousel >
                 <div>
                     <img src={banner1} />
