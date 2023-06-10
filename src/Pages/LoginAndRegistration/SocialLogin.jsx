@@ -17,7 +17,6 @@ const SocialLogin = () => {
                 const saveUser = { name: res.user.displayName, email: res.user.email, image: res.user.photoURL, role: 'student' }
                 axios.post(`http://localhost:4000/users`, saveUser)
                     .then(res => {
-                        console.log(res);
                         if (res.data.insertedId) {
                             Swal.fire({
                                 position: 'center',

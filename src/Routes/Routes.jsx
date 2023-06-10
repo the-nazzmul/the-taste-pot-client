@@ -33,7 +33,8 @@ export const router = createBrowserRouter([
       },
       {
         path: '/instructors',
-        element: <Instructors></Instructors>
+        element: <Instructors></Instructors>,
+        loader: ()=> fetch ('http://localhost:4000/users/instructors')
       },
       {
         path: '/classes',
