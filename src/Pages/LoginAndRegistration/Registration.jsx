@@ -31,21 +31,20 @@ const Registration = () => {
                             data.image = imageRes.data.display_url;
                             updateUserProfile(data.name, data.image)
                                 .then(() => {
-                                    const saveUser = {name: data.name, email: data.email, image: data.image, role: 'student'}
+                                    const saveUser = { name: data.name, email: data.email, image: data.image, role: 'student' }
                                     axios.post(`http://localhost:4000/users`, saveUser)
-                                    .then(res =>{
-                                        console.log(res);
-                                        if(res.data.insertedId){
-                                            Swal.fire({
-                                                position: 'center',
-                                                icon: 'success',
-                                                title: 'Registration Successful!',
-                                                showConfirmButton: false,
-                                                timer: 1500
-                                            })
-                                            navigate('/')
-                                        }
-                                    })
+                                        .then(res => {
+                                            if (res.data.insertedId) {
+                                                Swal.fire({
+                                                    position: 'center',
+                                                    icon: 'success',
+                                                    title: 'Registration Successful!',
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                })
+                                                navigate('/')
+                                            }
+                                        })
                                 })
                         }
                     })

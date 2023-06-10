@@ -2,10 +2,12 @@ import useUsers from "../../../Hooks/useUsers";
 import { GrUserAdmin } from "react-icons/gr";
 import { GiTeacher } from "react-icons/gi";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 const ManageUsers = () => {
     const [users, refetch] = useUsers()
+    const [axiosSecure] = useAxiosSecure()
 
     const handleMakeInstructor = (user) => {
         Swal.fire({
@@ -18,16 +20,9 @@ const ManageUsers = () => {
             confirmButtonText: 'Proceed!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/users/instructor`, {
-                    method: "PATCH",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(user)
-                })
-                    .then(res => res.json())
+                axiosSecure.patch('/users/instructor', user)
                     .then(data => {
-                        if (data.modifiedCount) {
+                        if (data.data.modifiedCount) {
                             Swal.fire(
                                 'Successful!',
                                 'User role has been updated',
@@ -50,16 +45,9 @@ const ManageUsers = () => {
             confirmButtonText: 'Proceed!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/users/admin`, {
-                    method: "PATCH",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(user)
-                })
-                    .then(res => res.json())
+                axiosSecure.patch('/users/admin', user)
                     .then(data => {
-                        if (data.modifiedCount) {
+                        if (data.data.modifiedCount) {
                             Swal.fire(
                                 'Successful!',
                                 'User role has been updated',
