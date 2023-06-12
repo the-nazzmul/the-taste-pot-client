@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
-
+import { RiDeleteBin6Fill } from "react-icons/ri";
 
 const ManageClasses = () => {
     const [axiosSecure] = useAxiosSecure()
@@ -12,6 +12,7 @@ const ManageClasses = () => {
         const result = await axiosSecure('/allClasses')
         return result.data;
     })
+
     const handleApproved = (classId) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -67,7 +68,32 @@ const ManageClasses = () => {
             }
         })
     }
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/classes/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount) {
+                            Swal.fire(
+                                'Deleted!',
+                                'The Class been deleted.',
+                                'success'
+                            )
+                            refetch()
+                        }
+                    })
 
+            }
+        })
+    }
     return (
 
         <div className="w-full h-full px-12 mt-20">
@@ -98,12 +124,12 @@ const ManageClasses = () => {
                                     <td>{singleClass.status}</td>
                                     <td>
                                         <div className="join">
-                                            <button onClick={() => handleApproved(singleClass._id)} className="btn join-item btn-xs bg-green-500 text-white">Approve</button>
-                                            <button onClick={() => handleDeny(singleClass._id)} className="btn join-item btn-xs bg-red-500 text-white">Deny</button>
+                                            <button disabled={singleClass.status === 'approved' || singleClass.status === 'denied'} onClick={() => handleApproved(singleClass._id)} className="btn join-item btn-xs bg-green-500 text-white">Approve</button>
+                                            <button disabled={singleClass.status === 'approved' || singleClass.status === 'denied'} onClick={() => handleDeny(singleClass._id)} className="btn join-item btn-xs bg-red-500 text-white">Deny</button>
                                         </div>
                                     </td>
                                     <td>
-                                        <button className="btn btn-sm bg-red-500 text-white">X</button>
+                                        <button className="btn btn-sm bg-red-500 text-white" onClick={() => handleDelete(singleClass._id)}><RiDeleteBin6Fill></RiDeleteBin6Fill></button>
                                     </td>
                                 </tr>
                             )
