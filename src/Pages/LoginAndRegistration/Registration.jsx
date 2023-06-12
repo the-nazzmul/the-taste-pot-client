@@ -49,7 +49,6 @@ const Registration = () => {
                         }
                     })
             })
-        console.log(data);
 
     };
 

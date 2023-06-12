@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useState } from "react";
 
 const image_hosting_token = import.meta.env.VITE_IMAGE_HOSTING_TOKEN
 
@@ -9,6 +10,7 @@ const AddClasses = () => {
 
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
+    const [disable, setDisable] = useState(false)
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
 
 
@@ -16,6 +18,7 @@ const AddClasses = () => {
     const onSubmit = data => {
         data.price = parseFloat(data.price)
         data.availableSeats = parseFloat(data.availableSeats)
+        data.enrolled = parseFloat(0)
         data.instructor = user?.displayName
         data.instructorEmail = user?.email
         Swal.fire({
@@ -28,6 +31,7 @@ const AddClasses = () => {
             confirmButtonText: 'Proceed!'
         }).then((result) => {
             if (result.isConfirmed) {
+                setDisable(true)
                 const formData = new FormData();
                 formData.append('image', data.image[0])
 
@@ -39,7 +43,7 @@ const AddClasses = () => {
                     .then(imageRes => {
                         if (imageRes.success) {
                             data.image = imageRes.data.display_url;
-                            data.status = 'pending'
+                            data.status = 'pending';
                             axiosSecure.post('/classes', data)
                                 .then(res => {
                                     if (res.data.insertedId) {
@@ -48,6 +52,7 @@ const AddClasses = () => {
                                             'Your class has been added!',
                                             'success'
                                         )
+                                        setDisable(false)
                                         reset()
                                     }
                                 })
@@ -89,6 +94,12 @@ const AddClasses = () => {
                         <input type="file" className="file-input file-input-bordered w-full max-w-xs" {...register('image', { required: true })} />
                     </div>
                 </div>
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Description*</span>
+                    </label>
+                    <textarea placeholder="Description" className="textarea textarea-bordered textarea-xs w-full"{...register('description', { required: true })}  ></textarea>
+                </div>
                 <div className="lg:flex gap-2">
                     <div className="form-control w-full">
                         <label className="label">
@@ -103,7 +114,7 @@ const AddClasses = () => {
                         <input type="text" defaultValue={user?.email} className="input input-bordered w-full " {...register('instructorEmail')} readOnly />
                     </div>
                 </div>
-                <input className="custom-btn mt-8" type="submit" value="Add Class" />
+                <input disabled={disable} className="custom-btn mt-8" type="submit" value="Add Class" />
             </form>
         </div>
     );

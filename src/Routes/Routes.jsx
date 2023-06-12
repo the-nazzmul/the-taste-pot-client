@@ -13,6 +13,9 @@ import MyClasses from "../Pages/Dashboard/Instructor/MyClasses";
 import MySelectedClasses from "../Pages/Dashboard/Student/MySelectedClasses";
 import EnrolledClasses from "../Pages/Dashboard/Student/EnrolledClasses";
 import PaymentHistory from "../Pages/Dashboard/Student/PaymentHistory";
+import ShowCourseDetails from "../Pages/ShowCourseDetails/ShowCourseDetails";
+import UpdateClass from "../Pages/Dashboard/Instructor/UpdateClass";
+import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 
 export const router = createBrowserRouter([
   {
@@ -34,11 +37,20 @@ export const router = createBrowserRouter([
       {
         path: '/instructors',
         element: <Instructors></Instructors>,
-        loader: ()=> fetch ('http://localhost:4000/users/instructors')
+        loader: () => fetch('http://localhost:4000/users/instructors')
       },
       {
-        path: '/classes',
+        path: '/courses',
         element: <Classes></Classes>
+      },
+      {
+        path: '/courses/:id',
+        element: <CourseDetails></CourseDetails>,
+        loader: ({ params }) => fetch(`http://localhost:4000/classes/${params.id}`)
+      },
+      {
+        path: '/courses/:id',
+        element: <ShowCourseDetails></ShowCourseDetails>
       }
     ]
   },
@@ -63,6 +75,11 @@ export const router = createBrowserRouter([
       {
         path: 'myClasses',
         element: <MyClasses></MyClasses>
+      },
+      {
+        path: 'updateClasses/:id',
+        element: <UpdateClass></UpdateClass>,
+        loader: ({ params }) => fetch(`http://localhost:4000/classes/${params.id}`)
       },
       // student routes
       {

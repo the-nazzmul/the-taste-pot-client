@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 
 
 const SingleClassCard = ({course}) => {
-    console.log(course);
     return (
         <div>
             <div className="card bg-base-100 shadow-xl">
@@ -10,11 +10,11 @@ const SingleClassCard = ({course}) => {
                 </figure>
                 <div className="card-body items-start text-start">
                     <h2 className="card-title text-lg">{course.classTitle}</h2>
-                    <p className="text-sm">Available Seats: {course.availableSeats}</p>
-                    <p className="text-sm">Price: ${course.price}</p>
-                    <p className="text-sm">Instructor: {course.instructor}</p>
+                    <p className="text-sm"><span className="font-bold">Available Seats: </span>{course.availableSeats}</p>
+                    <p className="text-sm"><span className="font-bold">Price: $</span>{course.price}</p>
+                    <p className="text-sm"><span className="font-bold">Instructor: </span>{course.instructor}</p>
                     <div className="card-actions mt-6">
-                        <button className="custom-btn">Select Course</button>
+                       <Link to={`/courses/${course._id}`}> <button className="custom-btn">Select Course</button></Link>
                     </div>
                 </div>
             </div>

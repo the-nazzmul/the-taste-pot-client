@@ -90,7 +90,6 @@ const ManageClasses = () => {
                             refetch()
                         }
                     })
-
             }
         })
     }
