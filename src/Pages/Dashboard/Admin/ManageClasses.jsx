@@ -12,8 +12,7 @@ const ManageClasses = () => {
         const result = await axiosSecure('/allClasses')
         return result.data;
     })
-    const handleApproval = (classId, approval) => {
-        console.log(classId, approval);
+    const handleApproved = (classId) => {
         Swal.fire({
             title: 'Are you sure?',
             icon: 'warning',
@@ -23,17 +22,47 @@ const ManageClasses = () => {
             confirmButtonText: 'Proceed!'
         }).then((result) => {
             if (result.isConfirmed) {
-                const update = { id: classId, approval: approval }
-                axiosSecure.patch('/allClasses', update)
-                .then(data => {
-                    if (data.status ===200) {
-                        Swal.fire(
-                            'Successful!',
-                            'User role has been updated',
-                            'success'
-                        )
-                        refetch()
-                    }
+                const id = { id: classId }
+                axiosSecure.patch('/allClasses/approved', id)
+                    .then(data => {
+                        if (data.status === 200) {
+                            Swal.fire(
+                                'Successful!',
+                                'User role has been updated',
+                                'success'
+                            )
+                            refetch()
+                        }
+                    })
+            }
+        })
+    }
+    const handleDeny = (classId) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Proceed!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.my_modal_1.showModal()
+                const submitButton = document.getElementById('feedbackBtn')
+                submitButton.addEventListener('click', () => {
+                    const feedback = document.getElementById('feedback').value;
+                    const update = { id: classId, feedback: feedback }
+                    axiosSecure.patch('/allClasses/deny', update)
+                        .then(data => {
+                            if (data.status === 200) {
+                                Swal.fire(
+                                    'Successful!',
+                                    'User role has been updated',
+                                    'success'
+                                )
+                                refetch()
+                            }
+                        })
                 })
             }
         })
@@ -69,8 +98,8 @@ const ManageClasses = () => {
                                     <td>{singleClass.status}</td>
                                     <td>
                                         <div className="join">
-                                            <button disabled={singleClass.status === 'approved' || singleClass.status === "denied"} onClick={() => handleApproval(singleClass._id, "approved")} className="btn join-item btn-xs bg-green-500 text-white">Approve</button>
-                                            <button disabled={singleClass.status === 'approved' || singleClass.status === "denied"} onClick={() => handleApproval(singleClass._id, "denied")} className="btn join-item btn-xs bg-red-500 text-white">Deny</button>
+                                            <button onClick={() => handleApproved(singleClass._id)} className="btn join-item btn-xs bg-green-500 text-white">Approve</button>
+                                            <button onClick={() => handleDeny(singleClass._id)} className="btn join-item btn-xs bg-red-500 text-white">Deny</button>
                                         </div>
                                     </td>
                                     <td>
@@ -81,6 +110,18 @@ const ManageClasses = () => {
                         }
                     </tbody>
                 </table>
+                {/* Feedback Modal */}
+                <dialog id="my_modal_1" className="modal">
+                    <form method="dialog" className="modal-box">
+                        <h3 className="text-xl my-4">Feedback</h3>
+                        <textarea id="feedback" className="textarea textarea-bordered w-full" placeholder="Feedback" name="feedback"></textarea>
+                        <input id="feedbackBtn" className="custom-btn my-4" type="submit" value="Proceed?" />
+                        <div className="modal-action">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn">Close</button>
+                        </div>
+                    </form>
+                </dialog>
             </div>
 
         </div>
