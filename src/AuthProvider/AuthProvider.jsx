@@ -29,7 +29,6 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
-        setLoading(true);
         return signOut(auth);
     }
 
@@ -45,14 +44,16 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 axios.post('https://the-taste-pot-server.vercel.app/jwt', { email: currentUser.email })
                     .then(data => {
-                        localStorage.setItem('access-token', data.data.token)
-                        setLoading(false);
+                        if (data.data) {
+                            localStorage.setItem('access-token', data?.data?.token)
+                            setLoading(false);
+                        }
                     })
             }
             else {
                 localStorage.removeItem('access-token')
+                setLoading(false);
             }
-            setLoading(false);
         });
         return () => {
             return unsubscribe();

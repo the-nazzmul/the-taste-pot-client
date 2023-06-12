@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from './useAuth';
 
 const axiosSecure = axios.create({
-  baseURL: 'https://the-taste-pot-server.vercel.app/',
+  baseURL: 'https://the-taste-pot-server.vercel.app',
 });
 
 const useAxiosSecure = () => {
-  const { logOut } = useAuth();
+  const { user,logOut } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const useAxiosSecure = () => {
         return Promise.reject(error);
       }
     );
-  }, [logOut, navigate]);
+  }, [logOut, navigate, user]);
 
   return [axiosSecure];
 };
