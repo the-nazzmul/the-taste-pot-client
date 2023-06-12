@@ -15,7 +15,7 @@ const SocialLogin = () => {
         googleLogin()
             .then((res) => {
                 const saveUser = { name: res.user.displayName, email: res.user.email, image: res.user.photoURL, role: 'student' }
-                axios.post(`http://localhost:4000/users`, saveUser)
+                axios.post(`https://the-taste-pot-server.vercel.app/users`, saveUser)
                     .then(res => {
                         if (res.data.insertedId) {
                             Swal.fire({

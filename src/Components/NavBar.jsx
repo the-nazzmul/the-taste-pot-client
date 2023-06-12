@@ -1,16 +1,24 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from './../assets/logo.svg'
 import useAuth from "../Hooks/useAuth";
+import useUserRole from "../Hooks/useUserRole";
 
 
 const NavBar = () => {
     const { user, logOut } = useAuth()
+    const [userRole] = useUserRole()
     const navigationElement = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/instructors'>Instructors</NavLink></li>
         <li><NavLink to='/courses'>Classes</NavLink></li>
         {
-            user ? <li><NavLink to='/dashboard'>Dashboard</NavLink></li> : ''
+            userRole === 'student' && <li><NavLink to='/dashboard/selectedClasses'>Dashboard</NavLink></li>
+        }
+        {
+            userRole === 'instructor' && <li><NavLink to='/dashboard/myClasses'>Dashboard</NavLink></li>
+        }
+        {
+            userRole === 'admin' && <li><NavLink to='/dashboard/manageUsers'>Dashboard</NavLink></li>
         }
 
     </>

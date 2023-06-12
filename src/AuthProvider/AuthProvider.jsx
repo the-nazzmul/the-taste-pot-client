@@ -42,15 +42,14 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            console.log(currentUser);
-            if(currentUser){
-                axios.post('http://localhost:4000/jwt', {email: currentUser.email})
-                .then(data => {
-                    localStorage.setItem('access-token', data.data.token)
-                    setLoading(false);
-                })
+            if (currentUser) {
+                axios.post('https://the-taste-pot-server.vercel.app/jwt', { email: currentUser.email })
+                    .then(data => {
+                        localStorage.setItem('access-token', data.data.token)
+                        setLoading(false);
+                    })
             }
-            else{
+            else {
                 localStorage.removeItem('access-token')
             }
             setLoading(false);

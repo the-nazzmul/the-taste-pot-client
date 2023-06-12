@@ -1,10 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
 import logo from './../assets/logo.svg'
 import useUserRole from "../Hooks/useUserRole";
+import useSelectedCourse from "../Hooks/useSelectedCourse";
 
 
 const Dashboard = () => {
     const [userRole] = useUserRole()
+    const [selectedCourses] = useSelectedCourse()
 
 
     return (
@@ -15,7 +17,7 @@ const Dashboard = () => {
                     {/* Page content here */}
 
                     {/* TODO: NEED to work on UI */}
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                    <label htmlFor="my-drawer-2" className="custom-btn drawer-button lg:hidden">Open drawer</label>
                     <Outlet></Outlet>
 
 
@@ -42,7 +44,10 @@ const Dashboard = () => {
                         {
                             userRole === 'student' &&
                             <>
-                                <li><NavLink to='/dashboard/selectedClasses'>My Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/selectedClasses'>
+                                    My Classes
+                                    <div className="badge">{selectedCourses.length}</div>
+                                </NavLink></li>
                                 <li><NavLink to='/dashboard/enrolledClasses'>Enrolled Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/paymentHistory'>Payment History</NavLink></li>
                             </>

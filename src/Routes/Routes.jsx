@@ -16,6 +16,9 @@ import PaymentHistory from "../Pages/Dashboard/Student/PaymentHistory";
 import ShowCourseDetails from "../Pages/ShowCourseDetails/ShowCourseDetails";
 import UpdateClass from "../Pages/Dashboard/Instructor/UpdateClass";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
+import PrivateRoute from "./Private/PrivateRoute";
+import AdminRoute from "./Private/AdminRoute";
+import InstructorRoute from "./Private/InstructorRoute";
 
 export const router = createBrowserRouter([
   {
@@ -37,7 +40,7 @@ export const router = createBrowserRouter([
       {
         path: '/instructors',
         element: <Instructors></Instructors>,
-        loader: () => fetch('http://localhost:4000/users/instructors')
+        loader: () => fetch('https://the-taste-pot-server.vercel.app/users/instructors')
       },
       {
         path: '/courses',
@@ -46,7 +49,7 @@ export const router = createBrowserRouter([
       {
         path: '/courses/:id',
         element: <CourseDetails></CourseDetails>,
-        loader: ({ params }) => fetch(`http://localhost:4000/classes/${params.id}`)
+        loader: ({ params }) => fetch(`https://the-taste-pot-server.vercel.app/classes/${params.id}`)
       },
       {
         path: '/courses/:id',
@@ -56,30 +59,30 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       // Admin Routes
       {
         path: 'manageClasses',
-        element: <ManageClasses></ManageClasses>
+        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
       },
       {
         path: 'manageUsers',
-        element: <ManageUsers></ManageUsers>
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       },
       // Instructor Routes
       {
         path: 'addClasses',
-        element: <AddClasses></AddClasses>
+        element: <InstructorRoute><AddClasses></AddClasses></InstructorRoute>
       },
       {
         path: 'myClasses',
-        element: <MyClasses></MyClasses>
+        element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
       },
       {
         path: 'updateClasses/:id',
-        element: <UpdateClass></UpdateClass>,
-        loader: ({ params }) => fetch(`http://localhost:4000/classes/${params.id}`)
+        element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>,
+        loader: ({ params }) => fetch(`https://the-taste-pot-server.vercel.app/classes/${params.id}`)
       },
       // student routes
       {
