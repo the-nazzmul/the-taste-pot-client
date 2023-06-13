@@ -2,15 +2,19 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useClientSecret from "../../../Hooks/useClientSecret";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ course,price,refetch}) => {
     const [cardError, setCardError] = useState('')
     const [processing, setProcessing] = useState(false)
     const [transactionId, setTransactionId] = useState('')
     const { user } = useAuth()
+    const [axiosSecure] = useAxiosSecure()
     const stripe = useStripe();
     const elements = useElements();
     const clientSecret = useClientSecret(price)
+
+    console.log(course);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -54,6 +58,21 @@ const CheckoutForm = ({ price }) => {
 
         if (paymentIntent.status === "succeeded") {
             setTransactionId(paymentIntent.id)
+            console.log(paymentIntent);
+            const payment ={
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price,
+                selectedCourseId: course._id,
+                courseId: course.courseId,
+                courseName: course.classTitle,
+                date: new Date()
+            }
+            axiosSecure.post('/payments', payment)
+            .then(res=>{
+                console.log(res);
+                refetch()
+            })
         }
     }
 

@@ -22,6 +22,7 @@ import InstructorRoute from "./Private/InstructorRoute";
 import StudentRoute from "./Private/StudentRoute";
 import Payment from "../Pages/Dashboard/Student/Payment";
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -101,7 +102,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'payment/:id',
-        element: <StudentRoute><Payment></Payment></StudentRoute>
+        element: <StudentRoute><Payment></Payment></StudentRoute>,
+        loader: ({ params }) => {
+          const token = localStorage.getItem('access-token')
+          return fetch(`http://localhost:4000/selectedCourse/${params.id}`, {
+            headers: {
+              authorization: `Bearer ${token}`
+            }
+          })
+        }
       }
     ]
   }
