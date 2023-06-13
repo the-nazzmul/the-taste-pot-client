@@ -1,8 +1,8 @@
 
 import { Navigate, useLocation } from "react-router";
-import useAuth from "../hooks/useAuth";
 import useUserRole from "../../Hooks/useUserRole";
 import LoadingSpinner from "../../Pages/Spinner/LoadingSpinner";
+import useAuth from "../../Hooks/useAuth";
 
 
 const StudentRoute = ({ children }) => {

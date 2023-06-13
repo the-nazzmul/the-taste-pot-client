@@ -19,6 +19,8 @@ import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import PrivateRoute from "./Private/PrivateRoute";
 import AdminRoute from "./Private/AdminRoute";
 import InstructorRoute from "./Private/InstructorRoute";
+import StudentRoute from "./Private/StudentRoute";
+import Payment from "../Pages/Dashboard/Student/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -87,15 +89,19 @@ export const router = createBrowserRouter([
       // student routes
       {
         path: 'selectedClasses',
-        element: <MySelectedClasses></MySelectedClasses>
+        element: <StudentRoute><MySelectedClasses></MySelectedClasses></StudentRoute>
       },
       {
         path: 'enrolledClasses',
-        element: <EnrolledClasses></EnrolledClasses>
+        element: <StudentRoute><EnrolledClasses></EnrolledClasses></StudentRoute>
       },
       {
         path: 'paymentHistory',
-        element: <PaymentHistory></PaymentHistory>
+        element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
+      },
+      {
+        path: 'payment',
+        element: <StudentRoute><Payment></Payment></StudentRoute>
       }
     ]
   }

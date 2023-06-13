@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useSelectedCourse from "../../../Hooks/useSelectedCourse";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { FaMoneyCheckAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const MySelectedClasses = () => {
     const [selectedCourses, refetch] = useSelectedCourse()
@@ -62,7 +63,7 @@ const MySelectedClasses = () => {
                                     <td>$ {course.price}</td>
                                     <td>{course.availableSeats}</td>
                                     <td>
-                                        <button className="btn bg-green-500 text-xl text-white"> Pay <FaMoneyCheckAlt></FaMoneyCheckAlt></button>
+                                        <Link to='/dashboard/payment'><button className="btn bg-green-500 text-xl text-white"> Pay <FaMoneyCheckAlt></FaMoneyCheckAlt></button></Link>
                                     </td>
                                     <td>
                                         <button onClick={() => { handleDelete(course._id) }} className="btn bg-red-500 text-xl text-white"><RiDeleteBin6Fill></RiDeleteBin6Fill></button>
