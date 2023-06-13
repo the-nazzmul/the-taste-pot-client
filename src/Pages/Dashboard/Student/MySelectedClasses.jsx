@@ -63,7 +63,7 @@ const MySelectedClasses = () => {
                                     <td>$ {course.price}</td>
                                     <td>{course.availableSeats}</td>
                                     <td>
-                                        <Link to='/dashboard/payment'><button className="btn bg-green-500 text-xl text-white"> Pay <FaMoneyCheckAlt></FaMoneyCheckAlt></button></Link>
+                                        <Link to={`/dashboard/payment/${course._id}`}><button className="btn bg-green-500 text-xl text-white"> Pay <FaMoneyCheckAlt></FaMoneyCheckAlt></button></Link>
                                     </td>
                                     <td>
                                         <button onClick={() => { handleDelete(course._id) }} className="btn bg-red-500 text-xl text-white"><RiDeleteBin6Fill></RiDeleteBin6Fill></button>

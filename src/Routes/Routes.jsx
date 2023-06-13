@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
       {
         path: '/instructors',
         element: <Instructors></Instructors>,
-        loader: () => fetch('https://the-taste-pot-server.vercel.app/users/instructors')
+        loader: () => fetch('http://localhost:4000/users/instructors')
       },
       {
         path: '/courses',
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
       {
         path: '/courses/:id',
         element: <CourseDetails></CourseDetails>,
-        loader: ({ params }) => fetch(`https://the-taste-pot-server.vercel.app/classes/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:4000/classes/${params.id}`)
       },
       {
         path: '/courses/:id',
@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateClasses/:id',
         element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>,
-        loader: ({ params }) => fetch(`https://the-taste-pot-server.vercel.app/classes/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:4000/classes/${params.id}`)
       },
       // student routes
       {
@@ -100,7 +100,7 @@ export const router = createBrowserRouter([
         element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
       },
       {
-        path: 'payment',
+        path: 'payment/:id',
         element: <StudentRoute><Payment></Payment></StudentRoute>
       }
     ]

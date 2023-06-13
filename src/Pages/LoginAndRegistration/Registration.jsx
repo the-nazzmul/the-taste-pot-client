@@ -32,7 +32,7 @@ const Registration = () => {
                             updateUserProfile(data.name, data.image)
                                 .then(() => {
                                     const saveUser = { name: data.name, email: data.email, image: data.image, role: 'student' }
-                                    axios.post(`https://the-taste-pot-server.vercel.app/users`, saveUser)
+                                    axios.post(`http://localhost:4000/users`, saveUser)
                                         .then(res => {
                                             if (res.data.insertedId) {
                                                 Swal.fire({

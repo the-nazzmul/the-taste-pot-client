@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             if (currentUser) {
-                axios.post('https://the-taste-pot-server.vercel.app/jwt', { email: currentUser.email })
+                axios.post('http://localhost:4000/jwt', { email: currentUser.email })
                     .then(data => {
                         if (data.data) {
                             localStorage.setItem('access-token', data?.data?.token)

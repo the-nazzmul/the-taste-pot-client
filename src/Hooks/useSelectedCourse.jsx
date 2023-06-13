@@ -6,15 +6,15 @@ import useAuth from "./useAuth";
 const useSelectedCourse = () => {
     const { user, loading } = useAuth()
     const [axiosSecure] = useAxiosSecure()
-    const { data: selectedCourses =[], refetch } = useQuery({
+    const { data: selectedCourses =[], refetch, isLoading: coursesLoading } = useQuery({
         queryKey: [user?.email],
-        enabled: !loading,
+        enabled: !loading && !!user?.email,
         queryFn: async () => {
             const result = await axiosSecure(`/selectedClasses/${user?.email}`)
             return result.data
         }
     })
-    return [selectedCourses, refetch]
+    return [selectedCourses,coursesLoading, refetch]
 };
 
 export default useSelectedCourse;
