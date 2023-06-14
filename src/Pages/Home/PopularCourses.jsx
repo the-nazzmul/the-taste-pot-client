@@ -5,6 +5,7 @@ const PopularCourses = () => {
     const courses = useLoaderData()
     const sortedCourses = courses.sort((a, b) => b.enrolled - a.enrolled);
     const topSix = sortedCourses.slice(0, 6)
+    console.log(topSix);
 
     return (
         <div className="mt-20">
