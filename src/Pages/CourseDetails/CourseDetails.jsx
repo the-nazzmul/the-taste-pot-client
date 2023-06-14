@@ -23,7 +23,16 @@ const CourseDetails = () => {
                 const selectedItem = { email: user?.email, courseId: _id, classTitle, image, instructorEmail, price, instructor, availableSeats }
                 axiosSecure.post(`/selectedClasses`, selectedItem)
                     .then(res => {
-                        if (res.data.insertedId) {
+                        if(res.data.message){
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'warning',
+                                title: 'You have already selected this course',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                        else if (res.data.insertedId) {
                             Swal.fire({
                                 position: 'center',
                                 icon: 'success',

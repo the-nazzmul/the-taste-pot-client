@@ -102,7 +102,7 @@ const ManageClasses = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="bg-[#E6820C] text-white">
                             <th>#</th>
                             <th>Name</th>
                             <th>Instructor</th>

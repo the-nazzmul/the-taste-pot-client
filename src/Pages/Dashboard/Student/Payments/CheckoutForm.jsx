@@ -1,8 +1,9 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState } from "react";
-import useAuth from "../../../Hooks/useAuth";
-import useClientSecret from "../../../Hooks/useClientSecret";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAuth from "../../../../Hooks/useAuth";
+import useClientSecret from "../../../../Hooks/useClientSecret";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({ course,price,refetch}) => {
     const [cardError, setCardError] = useState('')
@@ -13,8 +14,6 @@ const CheckoutForm = ({ course,price,refetch}) => {
     const stripe = useStripe();
     const elements = useElements();
     const clientSecret = useClientSecret(price)
-
-    console.log(course);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -58,11 +57,11 @@ const CheckoutForm = ({ course,price,refetch}) => {
 
         if (paymentIntent.status === "succeeded") {
             setTransactionId(paymentIntent.id)
-            console.log(paymentIntent);
             const payment ={
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
+                instructor: course.instructor,
                 selectedCourseId: course._id,
                 courseId: course.courseId,
                 courseName: course.classTitle,
@@ -70,7 +69,15 @@ const CheckoutForm = ({ course,price,refetch}) => {
             }
             axiosSecure.post('/payments', payment)
             .then(res=>{
-                console.log(res);
+                if(res.data.result.insertedId){
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Enrollment successful',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
                 refetch()
             })
         }

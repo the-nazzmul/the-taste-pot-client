@@ -10,7 +10,7 @@ const NavBar = () => {
     const navigationElement = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/instructors'>Instructors</NavLink></li>
-        <li><NavLink to='/courses'>Classes</NavLink></li>
+        <li><NavLink to='/courses'>Courses</NavLink></li>
         {
             userRole === 'student' && <li><NavLink to='/dashboard/selectedClasses'>Dashboard</NavLink></li>
         }

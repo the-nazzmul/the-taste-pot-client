@@ -10,9 +10,6 @@ import Login from "../Pages/LoginAndRegistration/Login";
 import Registration from "../Pages/LoginAndRegistration/Registration";
 import AddClasses from "../Pages/Dashboard/Instructor/AddClasses";
 import MyClasses from "../Pages/Dashboard/Instructor/MyClasses";
-import MySelectedClasses from "../Pages/Dashboard/Student/MySelectedClasses";
-import EnrolledClasses from "../Pages/Dashboard/Student/EnrolledClasses";
-import PaymentHistory from "../Pages/Dashboard/Student/PaymentHistory";
 import ShowCourseDetails from "../Pages/ShowCourseDetails/ShowCourseDetails";
 import UpdateClass from "../Pages/Dashboard/Instructor/UpdateClass";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
@@ -20,7 +17,10 @@ import PrivateRoute from "./Private/PrivateRoute";
 import AdminRoute from "./Private/AdminRoute";
 import InstructorRoute from "./Private/InstructorRoute";
 import StudentRoute from "./Private/StudentRoute";
-import Payment from "../Pages/Dashboard/Student/Payment";
+import EnrolledClasses from "../Pages/Dashboard/Student/EnrolledClasses/EnrolledClasses";
+import MySelectedClasses from "../Pages/Dashboard/Student/MySelectedClasses/MySelectedClasses";
+import Payment from "../Pages/Dashboard/Student/Payments/Payment";
+import PaymentHistory from "../Pages/Dashboard/Student/Payments/PaymentHistory";
 
 
 export const router = createBrowserRouter([

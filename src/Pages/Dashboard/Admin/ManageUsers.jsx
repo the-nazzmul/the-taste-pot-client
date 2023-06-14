@@ -67,7 +67,7 @@ const ManageUsers = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="bg-[#E6820C] text-white">
                             <th>#</th>
                             <th>Image</th>
                             <th>Name</th>

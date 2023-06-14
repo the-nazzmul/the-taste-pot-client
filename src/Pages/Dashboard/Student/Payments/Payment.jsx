@@ -2,7 +2,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { useLoaderData} from "react-router-dom";
-import useSelectedCourse from "../../../Hooks/useSelectedCourse";
+import useSelectedCourse from "../../../../Hooks/useSelectedCourse";
+
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK)
 
@@ -10,7 +11,6 @@ const Payment = () => {
 
     const[, ,refetch] = useSelectedCourse()
     const course = useLoaderData()
-    console.log(course);
     const price = course.price;
 
     return (

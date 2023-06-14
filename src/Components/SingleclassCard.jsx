@@ -14,7 +14,7 @@ const SingleClassCard = ({course}) => {
                     <p className="text-sm"><span className="font-bold">Price: $</span>{course.price}</p>
                     <p className="text-sm"><span className="font-bold">Instructor: </span>{course.instructor}</p>
                     <div className="card-actions mt-6">
-                       <Link to={`/courses/${course._id}`}> <button className="custom-btn">Select Course</button></Link>
+                       <Link to={`/courses/${course._id}`}> <button className="custom-btn">See Details</button></Link>
                     </div>
                 </div>
             </div>

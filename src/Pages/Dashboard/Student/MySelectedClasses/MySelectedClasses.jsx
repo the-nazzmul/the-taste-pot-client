@@ -1,14 +1,16 @@
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import useSelectedCourse from "../../../Hooks/useSelectedCourse";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useSelectedCourse from "../../../../Hooks/useSelectedCourse";
 
 const MySelectedClasses = () => {
     const [selectedCourses, refetch] = useSelectedCourse()
     const [axiosSecure] = useAxiosSecure()
 
+    console.log("jhamela", selectedCourses);
     const handleDelete = (id) => {
         Swal.fire({
             title: 'Are you sure?',
