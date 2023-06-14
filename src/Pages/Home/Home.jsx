@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
 import Banner from "../../Components/Banner";
+import PopularCourses from "./PopularCourses";
 
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
                 <title>The Taste Pot | Home</title>
             </Helmet>
             <Banner></Banner>
+            <PopularCourses></PopularCourses>
         </div>
     );
 };

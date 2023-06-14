@@ -34,7 +34,8 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: ()=> fetch("http://localhost:4000/classes")
       },
       {
         path: '/login',
@@ -49,8 +50,9 @@ export const router = createBrowserRouter([
         element: <Instructors></Instructors>
       },
       {
-        path: '/users/instructor/:id',
+        path: '/instructor/:id',
         element: <InstructorCourse></InstructorCourse>,
+        loader: ({ params }) => fetch(`http://localhost:4000/SingleUser/${params.id}`)
       },
       {
         path: '/courses',
@@ -70,6 +72,7 @@ export const router = createBrowserRouter([
   {
     path: 'dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       // Admin Routes
       {

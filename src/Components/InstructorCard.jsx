@@ -11,7 +11,7 @@ const InstructorCard = ({ instructor }) => {
                 <h2 className="card-title">{instructor.name}</h2>
                 <small>{instructor.email}</small>
                 <div className="card-actions mt-8">
-                    <Link to={`/users/instructor/${instructor._id}`}><button className="custom-btn">View Classes</button></Link>
+                    <Link to={`/instructor/${instructor._id}`}><button className="custom-btn">View Classes</button></Link>
                 </div>
             </div>
         </div>
