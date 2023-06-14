@@ -29,7 +29,7 @@ const PopularInstructors = () => {
 
     return (
         <div className="mt-20">
-            <h1 className="text-3xl font-bold text-center my-12">Popular Instructors</h1>
+            <h1 className="my-12 text-center font-bold text-5xl">Popular Instructors</h1>
             <div className="grid lg:grid-cols-3 gap-4 my-12 px-8">
                 {
                     top6Instructors.map(instructor =>

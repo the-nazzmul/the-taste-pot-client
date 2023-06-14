@@ -14,6 +14,7 @@
     "@react-spring/web": "^9.7.2",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.54.0",
+    "aos": "^3.0.0-beta.6",
     "axios": "^1.4.0",
     "daisyui": "^3.0.3",
     "date-fns": "^2.30.0",

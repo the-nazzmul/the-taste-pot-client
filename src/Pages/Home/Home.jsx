@@ -3,6 +3,7 @@ import Banner from "../../Components/Banner";
 import PopularCourses from "./PopularCourses";
 import PopularInstructors from "./PopularInstructors";
 import { Fade } from "react-awesome-reveal";
+import LatestBlogs from "./LatestBlogs";
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Banner></Banner>
             <Fade><PopularCourses></PopularCourses></Fade>
             <Fade><PopularInstructors></PopularInstructors></Fade>
+            <LatestBlogs></LatestBlogs>
         </div>
     );
 };
