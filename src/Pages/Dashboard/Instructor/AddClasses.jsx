@@ -3,6 +3,7 @@ import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const image_hosting_token = import.meta.env.VITE_IMAGE_HOSTING_TOKEN
 
@@ -65,6 +66,9 @@ const AddClasses = () => {
     };
     return (
         <div className="w-full h-full my-20 px-12">
+            <Helmet>
+                <title>The Taste Pot | Add Classes</title>
+            </Helmet>
             <h2 className="text-3xl font-bold text-center my-8">Add Classes</h2>
 
             <form onSubmit={handleSubmit(onSubmit)}>

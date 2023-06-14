@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import logo from './../assets/logo.svg'
 import useUserRole from "../Hooks/useUserRole";
 import useSelectedCourse from "../Hooks/useSelectedCourse";
+import { Helmet } from "react-helmet";
 
 
 const Dashboard = () => {
@@ -11,6 +12,9 @@ const Dashboard = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>The Taste Pot | Dashboard</title>
+            </Helmet>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">

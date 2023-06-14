@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import InstructorCard from "../../Components/instructorCard";
 import { useEffect, useState } from "react";
 
@@ -12,6 +13,9 @@ const Instructors = () => {
 
     return (
         <div className="pt-20">
+            <Helmet>
+                <title>The Taste Pot | Instructors</title>
+            </Helmet>
             <h2 className="py-20 text-center font-bold text-3xl bg-gradient-to-b from-orange-300 to-white rounded-b-xl">Meet our Instructors</h2>
             <div className="grid lg:grid-cols-3 gap-4 px-12 my-20">
                 {

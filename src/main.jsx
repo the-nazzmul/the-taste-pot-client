@@ -5,18 +5,21 @@ import { RouterProvider } from 'react-router-dom'
 import { router } from './Routes/Routes'
 import AuthProvider from './AuthProvider/AuthProvider'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { HelmetProvider } from 'react-helmet-async';
 
 
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <div className='container mx-auto'>
-          <RouterProvider router={router}></RouterProvider>
-        </div>
-      </AuthProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <div className='container mx-auto'>
+            <RouterProvider router={router}></RouterProvider>
+          </div>
+        </AuthProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   </React.StrictMode>
 )

@@ -1,12 +1,16 @@
 import { format } from "date-fns";
 import useEnrolled from "../../../../Hooks/useEnrolled";
+import { Helmet } from "react-helmet";
 
 
 const EnrolledClasses = () => {
     const [enrolledCourses] = useEnrolled()
-    
+
     return (
         <div className="w-full h-full px-12 mt-20">
+            <Helmet>
+                <title>The Taste Pot | Enrolled Classes</title>
+            </Helmet>
             <h2 className="text-3xl font-bold text-center my-8">Enrolled Classes</h2>
             <div className="overflow-x-auto">
                 <table className="table">

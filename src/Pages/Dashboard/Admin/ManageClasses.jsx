@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import { Helmet } from "react-helmet";
 
 const ManageClasses = () => {
     const [axiosSecure] = useAxiosSecure()
@@ -96,6 +97,9 @@ const ManageClasses = () => {
     return (
 
         <div className="w-full h-full px-12 mt-20">
+            <Helmet>
+                <title>The Taste Pot | Manage Classes</title>
+            </Helmet>
             <h2 className="text-3xl font-bold text-center my-8">Manage classes</h2>
 
             <div className="overflow-x-auto">

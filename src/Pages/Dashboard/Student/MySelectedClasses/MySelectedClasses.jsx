@@ -5,6 +5,7 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useSelectedCourse from "../../../../Hooks/useSelectedCourse";
+import { Helmet } from "react-helmet";
 
 const MySelectedClasses = () => {
     const [selectedCourses, refetch] = useSelectedCourse()
@@ -39,6 +40,9 @@ const MySelectedClasses = () => {
 
     return (
         <div className="w-full h-full px-12 mt-20">
+            <Helmet>
+                <title>The Taste Pot | Selected Classes</title>
+            </Helmet>
             <h2 className="text-3xl font-bold text-center my-8">My selected classes</h2>
 
             <div className="overflow-x-auto">

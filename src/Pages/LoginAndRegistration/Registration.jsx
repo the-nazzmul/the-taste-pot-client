@@ -5,6 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 
 const image_hosting_token = import.meta.env.VITE_IMAGE_HOSTING_TOKEN
@@ -54,6 +55,9 @@ const Registration = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>The Taste Pot | Register</title>
+            </Helmet>
             <div className="hero min-h-screen bg-[#FDF7EC] pt-8">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left">

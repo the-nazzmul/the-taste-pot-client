@@ -1,4 +1,5 @@
 
+import { Helmet } from "react-helmet";
 import SingleClassCard from "../../Components/SingleclassCard";
 import { useEffect, useState } from "react";
 
@@ -14,6 +15,9 @@ const Classes = () => {
     }, [])
     return (
         <div className="pt-20">
+            <Helmet>
+                <title>The Taste Pot | Courses</title>
+            </Helmet>
             <h2 className="py-20 text-center font-bold text-3xl bg-gradient-to-b from-orange-300 to-white rounded-b-xl">Our Courses</h2>
 
             <div className="grid lg:grid-cols-3 gap-4 my-12 px-8">

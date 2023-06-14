@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 const UpdateClass = () => {
@@ -45,6 +46,9 @@ const UpdateClass = () => {
     }
     return (
         <div className="w-full h-full my-20 px-12">
+            <Helmet>
+                <title>The Taste Pot | Update Class</title>
+            </Helmet>
             <h2 className="text-3xl font-bold text-center my-8">Update Course</h2>
 
             <form onSubmit={handleSubmit(onSubmit)}>

@@ -3,6 +3,7 @@ import { GrUserAdmin } from "react-icons/gr";
 import { GiTeacher } from "react-icons/gi";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 
 const ManageUsers = () => {
@@ -62,6 +63,9 @@ const ManageUsers = () => {
 
     return (
         <div className="w-full px-12 h-full mt-20">
+            <Helmet>
+                <title>The Taste Pot | Manage Users</title>
+            </Helmet>
             <h1 className="text-3xl font-bold text-center my-8 uppercase">Manage Users</h1>
             <div className="overflow-x-auto">
                 <table className="table">

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from './../../assets/logo.svg'
 import useAuth from "../../Hooks/useAuth";
 import SocialLogin from "./SocialLogin";
+import { Helmet } from "react-helmet";
 
 
 const Login = () => {
@@ -22,6 +23,9 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>The Taste Pot | Login</title>
+            </Helmet>
             <div className="hero min-h-screen bg-[#FDF7EC] pt-20">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">

@@ -5,6 +5,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { GrUpdate } from "react-icons/gr";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const MyClasses = () => {
     const { user, loading } = useAuth()
@@ -48,6 +49,9 @@ const MyClasses = () => {
 
     return (
         <div className="w-full h-full px-12 mt-20">
+            <Helmet>
+                <title>The Taste Pot | My Classes</title>
+            </Helmet>
             <h2 className="text-3xl font-bold text-center my-8">My Classes</h2>
             <div className="overflow-x-auto">
                 <table className="table mt-8">
