@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const SingleClassCard = ({course}) => {
     return (
         <div>
-            <div className="card bg-base-100 shadow-xl">
+            <div className={`${course.availableSeats === 0 ? 'bg-orange-600': 'bg-base-100'} card shadow-xl`}>
                 <figure className="px-10 pt-10">
                     <img src={course.image} alt="course image" className="rounded-xl h-[200px]" />
                 </figure>

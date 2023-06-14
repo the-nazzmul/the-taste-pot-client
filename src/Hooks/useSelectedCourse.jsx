@@ -7,7 +7,7 @@ const useSelectedCourse = () => {
     const { user, loading } = useAuth()
     const [axiosSecure] = useAxiosSecure()
     const { data: selectedCourses = [], refetch, isLoading: coursesLoading } = useQuery({
-        queryKey: [user?.email],
+        queryKey: ['/selectedClasses', user?.email],
         enabled: !loading,
         queryFn: async () => {
             const result = await axiosSecure(`/selectedClasses/${user?.email}`)

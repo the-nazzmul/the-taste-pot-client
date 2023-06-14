@@ -8,7 +8,7 @@ const useEnrolled = () => {
     const [axiosSecure] = useAxiosSecure()
 
     const { data: enrolledCourses = [], isLoading: enrolledClassesLoading } = useQuery({
-        queryKey: [user?.email],
+        queryKey: ['/paymentHistory', user?.email],
         enabled: !loading && !!user?.email,
         queryFn: async () => {
             if (!loading && user.email) {

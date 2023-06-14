@@ -21,12 +21,16 @@ import EnrolledClasses from "../Pages/Dashboard/Student/EnrolledClasses/Enrolled
 import MySelectedClasses from "../Pages/Dashboard/Student/MySelectedClasses/MySelectedClasses";
 import Payment from "../Pages/Dashboard/Student/Payments/Payment";
 import PaymentHistory from "../Pages/Dashboard/Student/Payments/PaymentHistory";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import InstructorCourse from "../Pages/InstructorCourse/InstructorCourse";
+
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -42,8 +46,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/instructors',
-        element: <Instructors></Instructors>,
-        loader: () => fetch('http://localhost:4000/users/instructors')
+        element: <Instructors></Instructors>
+      },
+      {
+        path: '/users/instructor/:id',
+        element: <InstructorCourse></InstructorCourse>,
       },
       {
         path: '/courses',

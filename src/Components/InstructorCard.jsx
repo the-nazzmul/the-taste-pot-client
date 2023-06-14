@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 
 
-const InstructorCard = ({instructor}) => {
+const InstructorCard = ({ instructor }) => {
     return (
         <div className="card bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
@@ -10,7 +11,7 @@ const InstructorCard = ({instructor}) => {
                 <h2 className="card-title">{instructor.name}</h2>
                 <small>{instructor.email}</small>
                 <div className="card-actions mt-8">
-                    <button className="custom-btn">View Classes</button>
+                    <Link to={`/users/instructor/${instructor._id}`}><button className="custom-btn">View Classes</button></Link>
                 </div>
             </div>
         </div>

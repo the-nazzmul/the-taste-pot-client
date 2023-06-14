@@ -59,8 +59,16 @@ const CourseDetails = () => {
                     <button onClick={handleSelect} disabled={userRole === 'admin' || userRole === 'instructor' || !user || course.availableSeats === 0} className="custom-btn">Select Course</button>
                 </div>
                 {
-                    (userRole === 'admin' || userRole === 'instructor') || !user &&
-                    <small className="text-red-600 text-center"><em>Please Login to select the course.</em></small>
+                    !user &&
+                    <small className="text-red-600 text-center"><em>Please Login to select the course</em></small>
+                }
+                {
+                    (userRole === 'admin' || userRole === 'instructor')  &&
+                    <small className="text-red-600 text-center"><em>Admin or Instructors are not allowed to select courses!</em></small>
+                }
+                {
+                    course.availableSeats === 0 &&
+                    <small className="text-red-600 text-center"><em>There is no available seat!</em></small>
                 }
             </div>
         </div>

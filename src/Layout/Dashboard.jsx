@@ -30,8 +30,8 @@ const Dashboard = () => {
                         {
                             userRole === 'admin' &&
                             <>
-                                <li><NavLink to='/dashboard/manageClasses'>Manage Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/manageUsers'>Manage Users</NavLink></li>
+                                <li><NavLink to='/dashboard/manageClasses'>Manage Classes</NavLink></li>
                             </>
                         }
                         {
@@ -57,7 +57,7 @@ const Dashboard = () => {
                         <li><NavLink to='/instructors'>Instructors</NavLink></li>
                         <li><NavLink to='/Courses'>Courses</NavLink></li>
                     </ul>
-
+                        
                 </div>
             </div>
         </div>
