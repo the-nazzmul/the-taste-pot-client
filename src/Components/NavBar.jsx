@@ -3,8 +3,7 @@ import logo from './../assets/logo.svg'
 import useAuth from "../Hooks/useAuth";
 import useUserRole from "../Hooks/useUserRole";
 import { useEffect, useState } from "react";
-import sun from './../assets/logo/sun.png'
-import moon from './../assets/logo/moon.png'
+import { BsMoonStarsFill, BsSunFill } from "react-icons/bs";
 
 
 const NavBar = () => {
@@ -29,6 +28,13 @@ const NavBar = () => {
     const { user, logOut } = useAuth()
     const [userRole] = useUserRole()
     const navigationElement = <>
+        <li>
+            <div className="lg:hidden avatar mr-2">
+                <div className="w-14 border-4 border-white rounded-full">
+                    <img src={user?.photoURL} />
+                </div>
+            </div>
+        </li>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/instructors'>Instructors</NavLink></li>
         <li><NavLink to='/courses'>Courses</NavLink></li>
@@ -70,24 +76,24 @@ const NavBar = () => {
                     {
                         user ?
                             <>
-                                <div className="avatar mr-2">
+                                <div className=" hidden lg:block avatar mr-2">
                                     <div className="w-14 border-4 border-white rounded-full">
-                                        <img src={user.photoURL} />
+                                        <img src={user?.photoURL} />
                                     </div>
                                 </div>
                                 <button onClick={handleLogOut} className="custom-btn">Logout</button>
                             </> :
                             <Link to='/login'><button className="custom-btn">Login</button></Link>
                     }
-                    <button className="btn btn-circle btn-ghost ml-2">
+                    <button className="btn btn-md btn-circle btn-ghost ml-2">
                         <label className="swap swap-rotate w-12 h-12">
                             <input
                                 type="checkbox"
                                 onChange={handleToggle}
                                 checked={theme === "light" ? false : true}
                             />
-                            <img src={sun} alt="light" className="w-8 h-8 swap-on" />
-                            <img src={moon} alt="dark" className="w-8 h-8 swap-off" />
+                            <BsSunFill alt="light" className="w-8 h-8 swap-on text-orange-400" />
+                            <BsMoonStarsFill alt="dark" className="w-8 h-8 swap-off text-blue-950" />
                         </label>
                     </button>
                 </div>
