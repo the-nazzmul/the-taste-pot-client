@@ -8,7 +8,7 @@ const PopularInstructors = () => {
     const courses = useLoaderData()
 
     useEffect(() => {
-        fetch('http://localhost:4000/users/instructors')
+        fetch('https://the-taste-pot-server.vercel.app/users/instructors')
             .then(res => res.json())
             .then(data => setInstructors(data))
     }, [])

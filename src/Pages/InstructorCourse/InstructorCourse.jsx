@@ -8,7 +8,7 @@ const InstructorCourse = () => {
     const instructor = useLoaderData()
     const [courses, setCourses] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:4000/instructor/${instructor?.email}`)
+        fetch(`https://the-taste-pot-server.vercel.app/instructor/${instructor?.email}`)
             .then(res => res.json())
             .then(data => setCourses(data))
     }, [])

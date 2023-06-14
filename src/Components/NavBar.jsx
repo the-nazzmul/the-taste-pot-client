@@ -2,9 +2,30 @@ import { Link, NavLink } from "react-router-dom";
 import logo from './../assets/logo.svg'
 import useAuth from "../Hooks/useAuth";
 import useUserRole from "../Hooks/useUserRole";
+import { useEffect, useState } from "react";
+import sun from './../assets/logo/sun.png'
+import moon from './../assets/logo/moon.png'
 
 
 const NavBar = () => {
+    const [theme, setTheme] = useState(
+        localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+    );
+
+    const handleToggle = (e) => {
+        if (e.target.checked) {
+            setTheme("dark");
+        } else {
+            setTheme("light");
+        }
+    };
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        const localTheme = localStorage.getItem("theme");
+        document.querySelector("html").setAttribute("data-theme", localTheme);
+    }, [theme]);
+
     const { user, logOut } = useAuth()
     const [userRole] = useUserRole()
     const navigationElement = <>
@@ -23,7 +44,7 @@ const NavBar = () => {
 
     </>
 
-    const handleLogOut = ()=>{
+    const handleLogOut = () => {
         logOut()
     }
     return (
@@ -55,9 +76,20 @@ const NavBar = () => {
                                     </div>
                                 </div>
                                 <button onClick={handleLogOut} className="custom-btn">Logout</button>
-                            </>:
+                            </> :
                             <Link to='/login'><button className="custom-btn">Login</button></Link>
                     }
+                    <button className="btn btn-circle btn-ghost ml-2">
+                        <label className="swap swap-rotate w-12 h-12">
+                            <input
+                                type="checkbox"
+                                onChange={handleToggle}
+                                checked={theme === "light" ? false : true}
+                            />
+                            <img src={sun} alt="light" className="w-8 h-8 swap-on" />
+                            <img src={moon} alt="dark" className="w-8 h-8 swap-off" />
+                        </label>
+                    </button>
                 </div>
             </div>
         </div>

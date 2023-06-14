@@ -25,7 +25,7 @@ const LatestBlogs = () => {
                             <p><span className="font-bold">Date:</span> 12/03/23</p>
                         </div>
 
-                        <h2 className="card-title text-left">You will never know you can cook until you try!</h2>
+                        <h2 className="card-title text-left">Importance of Proper Seasoning!</h2>
                         <div className="card-actions mt-8">
                             <button className="custom-btn">Read More</button>
                         </div>
