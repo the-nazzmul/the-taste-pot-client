@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const Classes = () => {
     const [classes, setClasses] = useState([])
     useEffect(() => {
-        fetch("https://the-taste-pot-server.vercel.app/classes")
+        fetch("https://the-taste-pot-server.onrender.com/classes")
             .then(res => res.json())
             .then((data) => {
                 setClasses(data)

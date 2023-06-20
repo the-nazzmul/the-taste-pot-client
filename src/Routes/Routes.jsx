@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch("https://the-taste-pot-server.vercel.app/classes")
+        loader: () => fetch("https://the-taste-pot-server.onrender.com/classes")
       },
       {
         path: '/login',
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
       {
         path: '/instructor/:id',
         element: <InstructorCourse></InstructorCourse>,
-        loader: ({ params }) => fetch(`https://the-taste-pot-server.vercel.app/SingleUser/${params.id}`)
+        loader: ({ params }) => fetch(`https://the-taste-pot-server.onrender.com/SingleUser/${params.id}`)
       },
       {
         path: '/courses',
@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
       {
         path: '/courses/:id',
         element: <CourseDetails></CourseDetails>,
-        loader: ({ params }) => fetch(`https://the-taste-pot-server.vercel.app/classes/${params.id}`)
+        loader: ({ params }) => fetch(`https://the-taste-pot-server.onrender.com/classes/${params.id}`)
       },
       {
         path: '/courses/:id',
@@ -95,7 +95,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateClasses/:id',
         element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>,
-        loader: ({ params }) => fetch(`https://the-taste-pot-server.vercel.app/classes/${params.id}`)
+        loader: ({ params }) => fetch(`https://the-taste-pot-server.onrender.com/classes/${params.id}`)
       },
       // student routes
       {
@@ -115,7 +115,7 @@ export const router = createBrowserRouter([
         element: <StudentRoute><Payment></Payment></StudentRoute>,
         loader: ({ params }) => {
           const token = localStorage.getItem('access-token')
-          return fetch(`https://the-taste-pot-server.vercel.app/selectedCourse/${params.id}`, {
+          return fetch(`https://the-taste-pot-server.onrender.com/selectedCourse/${params.id}`, {
             headers: {
               authorization: `Bearer ${token}`
             }

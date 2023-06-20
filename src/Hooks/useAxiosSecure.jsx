@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from './useAuth';
 
 const axiosSecure = axios.create({
-  baseURL: 'https://the-taste-pot-server.vercel.app',
+  baseURL: 'https://the-taste-pot-server.onrender.com',
 });
 
 const useAxiosSecure = () => {
