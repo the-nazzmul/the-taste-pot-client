@@ -17,35 +17,35 @@ const Banner = () => {
                     <img src={banner1} />
                     <div className="legend">
                         <h2 className="text-3xl font-bold text-white mx-auto">We believe anyone can cook!</h2>
-                        <Link><button className="bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm lg:my-4" >Ceck our Courses</button></Link>
+                        <Link><button className="bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm lg:my-4" >Check our Courses</button></Link>
                     </div>
                 </div>
                 <div>
                     <img src={banner2} />
                     <div className="legend">
                         <h2 className="text-3xl font-bold text-white mx-auto">We believe anyone can cook!</h2>
-                        <Link><button className="bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm lg:my-4" >Ceck our Courses</button></Link>
+                        <Link><button className="bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm lg:my-4" >Check our Courses</button></Link>
                     </div>
                 </div>
                 <div>
                     <img src={banner3} />
                     <div className="legend">
                         <h2 className="text-3xl font-bold text-white mx-auto">We believe anyone can cook!</h2>
-                        <Link><button className="bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm lg:my-4" >Ceck our Courses</button></Link>
+                        <Link><button className="bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm lg:my-4" >Check our Courses</button></Link>
                     </div>
                 </div>
                 <div>
                     <img src={banner4} />
                     <div className="legend">
                         <h2 className="text-3xl font-bold text-white mx-auto">We believe anyone can cook!</h2>
-                        <Link><button className="bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm lg:my-4" >Ceck our Courses</button></Link>
+                        <Link><button className="bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm lg:my-4" >Check our Courses</button></Link>
                     </div>
                 </div>
                 <div>
                     <img src={banner5} />
                     <div className="legend">
                         <h2 className="text-3xl font-bold text-white mx-auto">We believe anyone can cook!</h2>
-                        <Link><button className="bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm lg:my-4" >Ceck our Courses</button></Link>
+                        <Link><button className="bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white btn-sm lg:my-4" >Check our Courses</button></Link>
                     </div>
                 </div>
                 <div>
