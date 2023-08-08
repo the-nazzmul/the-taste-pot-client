@@ -17,5 +17,6 @@ a.active {
   background-image: url("/src/assets/bg1.jpeg");
   background-size: cover;
   background-attachment: fixed;
+  background-repeat: no-repeat;
   min-height: 400px;
 }
