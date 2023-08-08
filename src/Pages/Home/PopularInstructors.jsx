@@ -28,16 +28,27 @@ const PopularInstructors = () => {
 
 
     return (
-        <div className="mt-20">
-            <h1 className="my-12 text-center font-bold text-5xl">Popular Instructors</h1>
-            <div className="grid lg:grid-cols-3 gap-4 my-12 px-8">
-                {
-                    top6Instructors.map(instructor =>
-                        <InstructorCard key={instructor._id} instructor={instructor}></InstructorCard>
-                    )
-                }
-            </div>
+      <div className="mt-20">
+        <h1 className="mt-12 text-center font-bold text-5xl">
+          Popular Instructors
+        </h1>
+        <p className="my-12 w-3/4 mx-auto text-center">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
+          perspiciatis beatae maxime et commodi dolorum atque possimus aperiam
+          quaerat, doloremque laboriosam. Voluptates, non placeat, praesentium,
+          aliquid odio quidem similique facilis suscipit corporis sit quod magni
+          ex fugiat animi molestiae voluptas et ipsam. Unde est ad distinctio
+          dignissimos molestiae fuga sequi.
+        </p>
+        <div className="grid lg:grid-cols-3 gap-4 my-12 px-8">
+          {top6Instructors.map((instructor) => (
+            <InstructorCard
+              key={instructor._id}
+              instructor={instructor}
+            ></InstructorCard>
+          ))}
         </div>
+      </div>
     );
 };
 

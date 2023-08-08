@@ -2,11 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.custom-btn{
-    @apply bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white
+.custom-btn {
+  @apply bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg btn text-white;
+}
+.custom-bg {
+  @apply bg-gradient-to-r from-[#E67907] to-[#EAC41B] border-none rounded-lg text-white;
 }
 
-a.active{
-    @apply bg-gradient-to-l from-[#E67907] to-[#EAC41B] border-none rounded-lg text-white
+a.active {
+  @apply bg-gradient-to-l from-[#E67907] to-[#EAC41B] border-none rounded-lg text-white;
+}
+
+.sub-bg {
+  background-image: url("/src/assets/bg1.jpeg");
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 400px;
 }

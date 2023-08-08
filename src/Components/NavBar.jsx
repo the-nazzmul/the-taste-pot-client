@@ -7,23 +7,23 @@ import { BsMoonStarsFill, BsSunFill } from "react-icons/bs";
 
 
 const NavBar = () => {
-    const [theme, setTheme] = useState(
-        localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-    );
+    // const [theme, setTheme] = useState(
+    //     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+    // );
 
-    const handleToggle = (e) => {
-        if (e.target.checked) {
-            setTheme("dark");
-        } else {
-            setTheme("light");
-        }
-    };
+    // const handleToggle = (e) => {
+    //     if (e.target.checked) {
+    //         setTheme("dark");
+    //     } else {
+    //         setTheme("light");
+    //     }
+    // };
 
-    useEffect(() => {
-        localStorage.setItem("theme", theme);
-        const localTheme = localStorage.getItem("theme");
-        document.querySelector("html").setAttribute("data-theme", localTheme);
-    }, [theme]);
+    // useEffect(() => {
+    //     localStorage.setItem("theme", theme);
+    //     const localTheme = localStorage.getItem("theme");
+    //     document.querySelector("html").setAttribute("data-theme", localTheme);
+    // }, [theme]);
 
     const { user, logOut } = useAuth()
     const [userRole] = useUserRole()
@@ -55,7 +55,7 @@ const NavBar = () => {
     }
     return (
         <div>
-            <div className="navbar bg-[#FDF7EC] container absolute z-10">
+            <div className="navbar bg-[#FDF7EC] fixed z-10">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -85,7 +85,7 @@ const NavBar = () => {
                             </> :
                             <Link to='/login'><button className="custom-btn">Login</button></Link>
                     }
-                    <button className="btn btn-md btn-circle btn-ghost ml-2">
+                    {/* <button className="btn btn-md btn-circle btn-ghost ml-2">
                         <label className="swap swap-rotate w-12 h-12">
                             <input
                                 type="checkbox"
@@ -95,7 +95,7 @@ const NavBar = () => {
                             <BsSunFill alt="light" className="w-8 h-8 swap-on text-orange-400" />
                             <BsMoonStarsFill alt="dark" className="w-8 h-8 swap-off text-blue-950" />
                         </label>
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>
